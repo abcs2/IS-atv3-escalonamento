@@ -158,23 +158,33 @@ void updateTaskQueue(TaskQueue *taskQueue, TaskList *taskList, int *totalTicks) 
     return;
 }
 
-Task *getMostPriority(TaskQueue *taskQueue, int maxTicks) {
+Task *getMostPriority(TaskQueue *taskQueue, int maxTicks, int rate_edf) {
     Task *priority = NULL, *aux = taskQueue->head;
     int period = maxTicks;
 
     while (aux != NULL) {
         // rate monotonic
-        if (aux->period < period) {
-            priority = aux;
-            period = aux->period;
+        if (rate_edf == 0) {
+            if (aux->period < period) {
+                priority = aux;
+                period = aux->period;
+            }
+            aux = aux->nextQueue;
         }
-        aux = aux->nextQueue;
+        // earliest deadline first
+        else if (rate_edf == 1) {
+            if ((aux->deadline - aux->timeFromStart) < period) {
+                priority = aux;
+                period = (aux->deadline - aux->timeFromStart);
+            }
+            aux = aux->nextQueue;
+        }
     }
 
     return priority;
 }
 
-int waitForTask(TaskQueue *taskQueue, TaskList *taskList, int *totalTicks, int maxTicks) {
+int waitForTask(TaskQueue *taskQueue, TaskList *taskList, int *totalTicks, int maxTicks, int rate_edf) {
     int currentCounter = 0, code;
     while (1) {
         if ((*totalTicks) == maxTicks) {
@@ -182,6 +192,7 @@ int waitForTask(TaskQueue *taskQueue, TaskList *taskList, int *totalTicks, int m
             break;
         }
 
+        updateTaskQueue(taskQueue, taskList, totalTicks);
         if (taskQueue->head != NULL) {
             code = 1;
             break;
@@ -189,26 +200,26 @@ int waitForTask(TaskQueue *taskQueue, TaskList *taskList, int *totalTicks, int m
 
         (*totalTicks)++;
         currentCounter++;
-        updateTaskQueue(taskQueue, taskList, totalTicks);
     }
     if (currentCounter > 0) {
-        printf("idle for %d units", currentCounter);
+        FILE *arq;
+        switch(rate_edf) {
+            case 0:
+                arq = fopen("rate_abcs2.out", "a");
+                break;
+            case 1:
+                arq = fopen("edf_abcs2.out", "a");
+                break;
+        }
+        if (arq == NULL) {
+            printf("Falha ao abrir arquivo de saida.\n");
+            return -1;
+        }
+        fprintf(arq, "idle for %d units\n", currentCounter);
+        fclose(arq);
     }
 
     return code;
-}
-
-int randomBoringFunctionThatExistsToCallWaitForTaskBoringFunction(TaskQueue *taskQueue, TaskList* taskList, int *totalTicks, int maxTicks) {
-    int code = waitForTask(taskQueue, taskList, totalTicks, maxTicks);
-
-    if (code == 0) {
-        killRemainingTasks(taskQueue);
-        return 0;
-    } else if (code == 1) {
-        runTask(taskQueue, taskList, getMostPriority(taskQueue, maxTicks), totalTicks, maxTicks);
-    }
-
-    return 1;
 }
 
 void updateTimeFromStart(TaskQueue *taskQueue) {
@@ -221,7 +232,7 @@ void updateTimeFromStart(TaskQueue *taskQueue) {
     return;
 }
 
-void runTask(TaskQueue *taskQueue, TaskList *taskList, Task *task, int *totalTicks, int maxTicks) {
+void runTask(TaskQueue *taskQueue, TaskList *taskList, Task *task, int *totalTicks, int maxTicks, int rate_edf) {
 	int currentCounter = 0;
 	char status = ' ';
 	while (1) {
@@ -235,27 +246,56 @@ void runTask(TaskQueue *taskQueue, TaskList *taskList, Task *task, int *totalTic
         if (task->timeFromExec == task->burst) {
             task->completeExecutionCount++;
             removeTaskFromQueue(taskQueue, task);
+            task->timeFromExec = 0;
             status = 'F';
             break;
         }
         if (task->timeFromStart == task->deadline) {
+            task->timeFromExec = 0;
             status = 'L';
             break;
         }
         if ((*totalTicks) == maxTicks) {
+            task->timeFromExec = 0;
             status = 'K';
             break;
         }
-        if (task != getMostPriority(taskQueue, maxTicks)) {
+        if (task != getMostPriority(taskQueue, maxTicks, rate_edf)) {
             status = 'H';
             break;
         } 
 	}
     // execution interrupted or finished
-    task->timeFromExec = 0;
-    printf("[%s] for %d units - %c\n", task->name, currentCounter, status);
+    FILE *arq;
+    switch(rate_edf) {
+        case 0:
+            arq = fopen("rate_abcs2.out", "a");
+            break;
+        case 1:
+            arq = fopen("edf_abcs2.out", "a");
+            break;
+    }
+    if (arq == NULL) {
+        printf("Falha ao abrir arquivo de saida.\n");
+        return;
+    }
+    fprintf(arq, "[%s] for %d units - %c\n", task->name, currentCounter, status);
+    fclose(arq);
 
     return;
+}
+
+int randomBoringFunctionThatExistsToCallWaitForTaskBoringFunction(TaskQueue *taskQueue, TaskList* taskList, int *totalTicks, int maxTicks, int rate_edf) {
+    int code = waitForTask(taskQueue, taskList, totalTicks, maxTicks, rate_edf);
+
+    if (code == 0) {
+        killRemainingTasks(taskQueue);
+        return 0;
+    } else if (code == 1) {
+        runTask(taskQueue, taskList, getMostPriority(taskQueue, maxTicks, rate_edf), totalTicks, maxTicks, rate_edf);
+    }
+
+    return 1;
 }
 
 int readFile(TaskList *taskList, char *fileName) {
@@ -272,7 +312,7 @@ int readFile(TaskList *taskList, char *fileName) {
         fclose(arq);
         return -1;
     }
-    while (fscanf("%s %d %d %d ", name, &period, &deadline, &burst) != -1) {
+    while (fscanf(arq, "%s %d %d %d ", name, &period, &deadline, &burst) != -1) {
         if ((period < 0 || deadline < 0 || burst < 0) || (burst >= deadline || deadline >= period)) {
             printf("Tempo invalido de execucao.\n");
             fclose(arq);
@@ -288,33 +328,49 @@ int readFile(TaskList *taskList, char *fileName) {
     return maxTicks;
 }
 
-void printResults(TaskList *taskList) {
+void printResults(TaskList *taskList, int rate_edf) {
     Task *aux = taskList->head;
     if (aux == NULL) {
         return;
     }
-    printf("LOST DEADLINES\n");
+    FILE *arq;
+    switch(rate_edf) {
+        case 0:
+            arq = fopen("rate_abcs2.out", "a");
+            break;
+        case 1:
+            arq = fopen("edf_abcs2.out", "a");
+            break;
+    }
+    if (arq == NULL) {
+        printf("Falha ao abrir arquivo de saida.\n");
+        return;
+    }
+
+    fprintf(arq, "\n");
+    fprintf(arq, "LOST DEADLINES\n");
     while (aux != NULL) {
-        printf("[%s] %d\n", aux->name, aux->lostDeadlinesCount);
+        fprintf(arq, "[%s] %d\n", aux->name, aux->lostDeadlinesCount);
         aux = aux->nextList;
     }
-    printf("\n");
 
     aux = taskList->head;
-    printf("COMPLETE EXECUTION\n");
+    fprintf(arq, "\n");
+    fprintf(arq, "COMPLETE EXECUTION\n");
     while (aux != NULL) {
-        printf("[%s] %d\n", aux->name, aux->completeExecutionCount);
+        fprintf(arq, "[%s] %d\n", aux->name, aux->completeExecutionCount);
         aux = aux->nextList;
     }
-    printf("\n");
 
     aux = taskList->head;
-    printf("KILLED\n");
+    fprintf(arq, "\n");
+    fprintf(arq, "KILLED\n");
     while (aux != NULL) {
-        printf("[%s] %d\n", aux->name, aux->killedCount);
+        fprintf(arq, "[%s] %d\n", aux->name, aux->killedCount);
         aux = aux->nextList;
     }
 
+    fclose(arq);
     return;
 }
 
@@ -343,8 +399,20 @@ int main(int argc, char **argv) {
     }
     if (strcmp(argv[1], "rate") == 0) {
         rate_edf = 0;
+        FILE *arq = fopen("rate_abcs2.out", "w");
+        if (arq == NULL) {
+            printf("Erro ao abrir arquivo de saida.\n");
+            return 1;
+        }
+        fclose(arq);
     } else if (strcmp(argv[1], "edf") == 0) {
         rate_edf = 1;
+        FILE *arq = fopen("edf_abcs2.out", "w");
+        if (arq == NULL) {
+            printf("Erro ao abrir arquivo de saida.\n");
+            return 1;
+        }
+        fclose(arq);
     } else {
         printf("Tipo de escalonador invalido.\n");
         freeLists(taskList, taskQueue);
@@ -356,9 +424,30 @@ int main(int argc, char **argv) {
         freeLists(taskList, taskQueue);
         return -1;
     }
-    updateTaskQueue(taskQueue, taskList, &totalTicks);
-    while (randomBoringFunctionThatExistsToCallWaitForTaskBoringFunction(taskQueue, taskList, &totalTicks, maxTicks) != 0);
-    printResults(taskList);
+    
+    FILE *arq1;
+    switch(rate_edf) {
+        case 0:
+            arq1 = fopen("rate_abcs2.out", "a");
+            if (arq1 == NULL) {
+                printf("Falha ao abrir arquivo de saida.\n");
+                return 1;
+            }
+            fprintf(arq1, "EXECUTION BY RATE\n\n");
+            fclose(arq1);
+            break;
+        case 1:
+            arq1 = fopen("edf_abcs2.out", "a");
+            if (arq1 == NULL) {
+                printf("Falha ao abrir arquivo de saida.\n");
+                return 1;
+            }
+            fprintf(arq1, "EXECUTION BY EDF\n\n");
+            fclose(arq1);
+            break;
+    }
+    while (randomBoringFunctionThatExistsToCallWaitForTaskBoringFunction(taskQueue, taskList, &totalTicks, maxTicks, rate_edf) != 0);
+    printResults(taskList, rate_edf);
 
     freeLists(taskList, taskQueue);
     return 0;

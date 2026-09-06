@@ -1,0 +1,240 @@
+Script started on 2026-09-06 09:49:38-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="110" LINES="27"]
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ date
+[?2004lSun Sep  6 09:49:45 -03 2026
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ whoami[K[K[K[K[K[Kwhoami
+[?2004lpori
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ pwd
+[?2004l/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make clean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make schedula[Ker
+[?2004lgcc -c source/main.c -o objects/main
+[01m[Ksource/main.c:[m[K In function ‘[01m[KrandomBoringFunctionThatExistsToCallWaitForTaskBoringFunction[m[K’:
+[01m[Ksource/main.c:208:9:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[KrunTask[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wimplicit-function-declaration-Wimplicit-function-declaration]8;;[m[K]
+  208 |         [01;35m[KrunTask[m[K(taskQueue, taskList, getMostPriority(taskQueue, maxTicks), totalTicks, maxTicks);
+      |         [01;35m[K^~~~~~~[m[K
+[01m[Ksource/main.c:[m[K At top level:
+[01m[Ksource/main.c:224:6:[m[K [01;35m[Kwarning: [m[Kconflicting types for ‘[01m[KrunTask[m[K’; have ‘[01m[Kvoid(TaskQueue *, TaskList *, Task *, int *, int)[m[K’ {aka ‘[01m[Kvoid(TaskQueue *, TaskList *, struct task *, int *, int)[m[K’}
+  224 | void [01;35m[KrunTask[m[K(TaskQueue *taskQueue, TaskList *taskList, Task *task, int *totalTicks, int maxTicks) {
+      |      [01;35m[K^~~~~~~[m[K
+[01m[Ksource/main.c:208:9:[m[K [01;36m[Knote: [m[Kprevious implicit declaration of ‘[01m[KrunTask[m[K’ with type ‘[01m[Kvoid(TaskQueue *, TaskList *, Task *, int *, int)[m[K’ {aka ‘[01m[Kvoid(TaskQueue *, TaskList *, struct task *, int *, int)[m[K’}
+  208 |         [01;36m[KrunTask[m[K(taskQueue, taskList, getMostPriority(taskQueue, maxTicks), totalTicks, maxTicks);
+      |         [01;36m[K^~~~~~~[m[K
+[01m[Ksource/main.c:[m[K In function ‘[01m[KreadFile[m[K’:
+[01m[Ksource/main.c:275:19:[m[K [01;35m[Kwarning: [m[Kpassing argument 1 of ‘[01m[Kfscanf[m[K’ from incompatible pointer type [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wincompatible-pointer-types-Wincompatible-pointer-types]8;;[m[K]
+  275 |     while (fscanf([01;35m[K"%s %d %d %d "[m[K, name, &period, &deadline, &burst) != -1) {
+      |                   [01;35m[K^~~~~~~~~~~~~~[m[K
+      |                   [01;35m[K|[m[K
+      |                   [01;35m[Kchar *[m[K
+In file included from [01m[Ksource/main.c:1[m[K:
+[01m[K/usr/include/stdio.h:422:37:[m[K [01;36m[Knote: [m[Kexpected ‘[01m[KFILE * restrict[m[K’ but argument is of type ‘[01m[Kchar *[m[K’
+  422 | extern int fscanf ([01;36m[KFILE *__restrict __stream[m[K,
+      |                    [01;36m[K~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+cc   objects/main.o   -o objects/main
+/usr/bin/ld: cannot find objects/main.o: No such file or directory
+collect2: error: ld returned 1 exit status
+make: *** [<builtin>: objects/main] Error 1
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make scheduler[4Pclean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make cleanscheduler
+[?2004lgcc -c source/main.c -o objects/main
+[01m[Ksource/main.c:[m[K In function ‘[01m[KrunTask[m[K’:
+[01m[Ksource/main.c:209:9:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[KupdateTimeFromStart[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wimplicit-function-declaration-Wimplicit-function-declaration]8;;[m[K]
+  209 |         [01;35m[KupdateTimeFromStart[m[K(taskQueue);
+      |         [01;35m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[Ksource/main.c:[m[K At top level:
+[01m[Ksource/main.c:251:6:[m[K [01;35m[Kwarning: [m[Kconflicting types for ‘[01m[KupdateTimeFromStart[m[K’; have ‘[01m[Kvoid(TaskQueue *)[m[K’
+  251 | void [01;35m[KupdateTimeFromStart[m[K(TaskQueue *taskQueue) {
+      |      [01;35m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[Ksource/main.c:209:9:[m[K [01;36m[Knote: [m[Kprevious implicit declaration of ‘[01m[KupdateTimeFromStart[m[K’ with type ‘[01m[Kvoid(TaskQueue *)[m[K’
+  209 |         [01;36m[KupdateTimeFromStart[m[K(taskQueue);
+      |         [01;36m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[Ksource/main.c:[m[K In function ‘[01m[KreadFile[m[K’:
+[01m[Ksource/main.c:275:19:[m[K [01;35m[Kwarning: [m[Kpassing argument 1 of ‘[01m[Kfscanf[m[K’ from incompatible pointer type [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wincompatible-pointer-types-Wincompatible-pointer-types]8;;[m[K]
+  275 |     while (fscanf([01;35m[K"%s %d %d %d "[m[K, name, &period, &deadline, &burst) != -1) {
+      |                   [01;35m[K^~~~~~~~~~~~~~[m[K
+      |                   [01;35m[K|[m[K
+      |                   [01;35m[Kchar *[m[K
+In file included from [01m[Ksource/main.c:1[m[K:
+[01m[K/usr/include/stdio.h:422:37:[m[K [01;36m[Knote: [m[Kexpected ‘[01m[KFILE * restrict[m[K’ but argument is of type ‘[01m[Kchar *[m[K’
+  422 | extern int fscanf ([01;36m[KFILE *__restrict __stream[m[K,
+      |                    [01;36m[K~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+cc   objects/main.o   -o objects/main
+/usr/bin/ld: cannot find objects/main.o: No such file or directory
+collect2: error: ld returned 1 exit status
+make: *** [<builtin>: objects/main] Error 1
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make scheduler[4Pclean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make cleanscheduler
+[?2004lgcc -c source/main.c -o objects/main
+[01m[Ksource/main.c:[m[K In function ‘[01m[KreadFile[m[K’:
+[01m[Ksource/main.c:275:19:[m[K [01;35m[Kwarning: [m[Kpassing argument 1 of ‘[01m[Kfscanf[m[K’ from incompatible pointer type [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wincompatible-pointer-types-Wincompatible-pointer-types]8;;[m[K]
+  275 |     while (fscanf([01;35m[K"%s %d %d %d "[m[K, name, &period, &deadline, &burst) != -1) {
+      |                   [01;35m[K^~~~~~~~~~~~~~[m[K
+      |                   [01;35m[K|[m[K
+      |                   [01;35m[Kchar *[m[K
+In file included from [01m[Ksource/main.c:1[m[K:
+[01m[K/usr/include/stdio.h:422:37:[m[K [01;36m[Knote: [m[Kexpected ‘[01m[KFILE * restrict[m[K’ but argument is of type ‘[01m[Kchar *[m[K’
+  422 | extern int fscanf ([01;36m[KFILE *__restrict __stream[m[K,
+      |                    [01;36m[K~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+cc   objects/main.o   -o objects/main
+/usr/bin/ld: cannot find objects/main.o: No such file or directory
+collect2: error: ld returned 1 exit status
+make: *** [<builtin>: objects/main] Error 1
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make scheduler[4Pclean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make cleanscheduler
+[?2004lgcc -c source/main.c -o objects/main
+cc   objects/main.o   -o objects/main
+/usr/bin/ld: cannot find objects/main.o: No such file or directory
+collect2: error: ld returned 1 exit status
+make: *** [<builtin>: objects/main] Error 1
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make scheduler[4Pclean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make cleanscheduler
+[?2004lgcc -c source/main.c -o objects/main.o
+cc   objects/main.o   -o objects/main
+gcc objects/main.o -o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make scheduler[4Pclean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make cleanscheduler
+[?2004lgcc -c source/main.c -o objects/main.o
+cc   objects/main.o   -o objects/main
+gcc objects/main.o -o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make scheduler[4Pclean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make cleanscheduler
+[?2004lgcc -c source/main.c -o objects/main.o
+gcc objects/main.o -o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler a a a a a[K[K[K[K[K[K[K[K[K[K
+[?2004lQuantidade invalida de argumentos.
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler a a a
+[?2004lQuantidade invalida de argumentos.
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler a a a[K[K[K[K[Krate aa
+[?2004lFalha ao abrir o arquivo.
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler rate aa[K[K[K[K[K[K[Ka a [K
+[?2004lTipo de escalonador invalido.
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler a a[K[K[Krate voo.txt
+[?2004lLOST DEADLINES
+[ATT] 0
+[NAV] 0
+
+COMPLETE EXECUTION
+[ATT] 0
+[NAV] 0
+
+KILLED
+[ATT] 0
+[NAV] 0
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler rate voo.txta a[Krate aa[2Pa a a[Kmake scheduler[4Pclean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make clean./scheduler rate voo.txta a[Krate aa[2Pa a a[Kmake scheduler
+[?2004lgcc -c source/main.c -o objects/main.o
+gcc objects/main.o -o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make scheduler[4Pclean./scheduler rate voo.txta a[Krate aa[4Pa arate voo.txt
+[?2004l
+LOST DEADLINES
+[ATT] 0 P: 20 D: 12 B: 8
+[NAV] 0 P: 50 D: 30 B: 15
+
+COMPLETE EXECUTION
+[ATT] 0
+[NAV] 0
+
+KILLED
+[ATT] 0
+[NAV] 0
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler rate voo.txt[10Pmake scheduler[4Pclean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make clean./scheduler rate voo.txt[10Pmake scheduler
+[?2004lgcc -c source/main.c -o objects/main.o
+gcc objects/main.o -o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make scheduler[4Pclean./scheduler rate voo.txt
+[?2004l
+LOST DEADLINES
+[ATT] 0
+[NAV] 0
+
+COMPLETE EXECUTION
+[ATT] 0
+[NAV] 0
+
+KILLED
+[ATT] 0
+[NAV] 0
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler rate voo.txt[10Pmake scheduler[4Pclean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make clean./scheduler rate voo.txt[10Pmake scheduler
+[?2004lgcc -c source/main.c -o objects/main.o
+gcc objects/main.o -o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make scheduler[4Pclean./scheduler rate voo.txt
+[?2004l[ATT] for 8 units - F
+[NAV] for 12 units - H
+[ATT] for 8 units - F
+[NAV] for 2 units - L
+idle for 10 units
+[ATT] for 8 units - F
+idle for 2 units
+[NAV] for 10 units - H
+[ATT] for 8 units - F
+[NAV] for 12 units - L
+[ATT] for 8 units - F
+idle for 12 units
+
+LOST DEADLINES
+[ATT] 0
+[NAV] 2
+
+COMPLETE EXECUTION
+[ATT] 5
+[NAV] 0
+
+KILLED
+[ATT] 1
+[NAV] 1
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ nada mau [K[K[Kal pra primeira execucao. ..
+[?2004lCommand 'nada' not found, did you mean:
+  command 'nala' from deb nala (0.14.0)
+  command 'nama' from deb nama (1.216-2)
+  command 'sada' from deb plc-utils-extra (0.0.6+git20230504.1ba7d5a0-1)
+  command 'nad' from deb ncbi-acc-download (0.2.8-1)
+Try: sudo apt install <deb name>
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ nada mal pra primeira execucao...[A]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ [7P./scheduler rate voo.txt
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[10Pmake scheduler[4Pclean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make cleannada mal pra primeira execucao...[A]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ [7P./scheduler rate voo.txt
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[10Pmake scheduler
+[?2004lgcc -c source/main.c -o objects/main.o
+gcc objects/main.o -o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make scheduler[4Pcleannada mal pra primeira execucao...[A]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ [7P./scheduler rate voo.txt
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[?2004l[ATT] for 8 units - F
+[NAV] for 12 units - H
+[ATT] for 8 units - F
+[NAV] for 2 units - L
+idle for 10 units
+[ATT] for 8 units - F
+idle for 2 units
+[NAV] for 10 units - H
+[ATT] for 8 units - F
+[NAV] for 12 units - L
+[ATT] for 8 units - F
+idle for 12 units
+
+LOST DEADLINES
+[ATT] 0
+[NAV] 2
+
+COMPLETE EXECUTION
+[ATT] 5
+[NAV] 0
+
+KILLED
+[ATT] 0
+[NAV] 0
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler rate voo.txt[10Pmake scheduler[4Pclean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make clean./scheduler rate voo.txt[10Pmake scheduler
+[?2004lgcc -c source/main.c -o objects/main.o
+gcc objects/main.o -o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: 
