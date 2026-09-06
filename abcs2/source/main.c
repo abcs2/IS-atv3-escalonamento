@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MAX_NAME 10
 
@@ -38,7 +39,17 @@ void freeTasks(Task *task) {
     freeTasks(task->nextList);
     free(task);
     task = NULL;
-    
+
+    return;
+}
+
+void freeLists(TaskList *taskList, TaskQueue *taskQueue) {
+    freeTasks(taskList->head);
+    free(taskList);
+    free(taskQueue);
+    taskList = NULL;
+    taskQueue = NULL;
+
     return;
 }
 
@@ -57,11 +68,13 @@ void addTaskToList(TaskList *taskList, Task *task) {
     return;
 }
 
-void createTask(TaskList *taskList, int period, int deadline, int burst) {
+int createTask(TaskList *taskList, char *name, int period, int deadline, int burst) {
     Task *task = (Task *) malloc(sizeof(Task));
     if (task == NULL) {
-        return;
+        printf("Falha ao alocar memoria.\n");
+        return -1;
     }
+    strcpy(task->name, name);
     task->period = period;
     task->deadline = deadline;
     task->burst = burst;
@@ -77,7 +90,7 @@ void createTask(TaskList *taskList, int period, int deadline, int burst) {
     task->nextQueue = NULL;
     addTaskToList(taskList, task);
 
-    return;
+    return 0;
 }
 
 void addTaskToQueue(TaskQueue *taskQueue, Task *task) {
@@ -165,7 +178,6 @@ int waitForTask(TaskQueue *taskQueue, TaskList *taskList, int *totalTicks, int m
     int currentCounter = 0, code;
     while (1) {
         if ((*totalTicks) == maxTicks) {
-            // kill remaining tasks
             code = 0;
             break;
         }
@@ -186,16 +198,17 @@ int waitForTask(TaskQueue *taskQueue, TaskList *taskList, int *totalTicks, int m
     return code;
 }
 
-void randomBoringFunctionThatExistsToCallWaitForTaskBoringFunction(TaskQueue *taskQueue, TaskList* taskList, int *totalTicks, int maxTicks) {
+int randomBoringFunctionThatExistsToCallWaitForTaskBoringFunction(TaskQueue *taskQueue, TaskList* taskList, int *totalTicks, int maxTicks) {
     int code = waitForTask(taskQueue, taskList, totalTicks, maxTicks);
 
     if (code == 0) {
         killRemainingTasks(taskQueue);
+        return 0;
     } else if (code == 1) {
         runTask(taskQueue, taskList, getMostPriority(taskQueue, maxTicks), totalTicks, maxTicks);
     }
 
-    return;
+    return 1;
 }
 
 void updateTimeFromStart(TaskQueue *taskQueue) {
@@ -245,8 +258,108 @@ void runTask(TaskQueue *taskQueue, TaskList *taskList, Task *task, int *totalTic
     return;
 }
 
+int readFile(TaskList *taskList, char *fileName) {
+    int maxTicks, period, deadline, burst;
+    char name[MAX_NAME];
+    FILE *arq = fopen(fileName, "r");
+    if (arq == NULL) {
+        printf("Falha ao abrir o arquivo.\n");
+        return -1;
+    }
+    fscanf(arq, "%d ", &maxTicks);
+    if (maxTicks < 0) {
+        printf("Tempo invalido de execucao.\n");
+        fclose(arq);
+        return -1;
+    }
+    while (fscanf("%s %d %d %d ", name, &period, &deadline, &burst) != -1) {
+        if ((period < 0 || deadline < 0 || burst < 0) || (burst >= deadline || deadline >= period)) {
+            printf("Tempo invalido de execucao.\n");
+            fclose(arq);
+            return -1;
+        }
+        if (createTask(taskList, name, period, deadline, burst) == -1) {
+            fclose(arq);
+            return -1;
+        }
+    }
+
+    fclose(arq);
+    return maxTicks;
+}
+
+void printResults(TaskList *taskList) {
+    Task *aux = taskList->head;
+    if (aux == NULL) {
+        return;
+    }
+    printf("LOST DEADLINES\n");
+    while (aux != NULL) {
+        printf("[%s] %d\n", aux->name, aux->lostDeadlinesCount);
+        aux = aux->nextList;
+    }
+    printf("\n");
+
+    aux = taskList->head;
+    printf("COMPLETE EXECUTION\n");
+    while (aux != NULL) {
+        printf("[%s] %d\n", aux->name, aux->completeExecutionCount);
+        aux = aux->nextList;
+    }
+    printf("\n");
+
+    aux = taskList->head;
+    printf("KILLED\n");
+    while (aux != NULL) {
+        printf("[%s] %d\n", aux->name, aux->killedCount);
+        aux = aux->nextList;
+    }
+
+    return;
+}
+
 int main(int argc, char **argv) {
     // period > deadline > burst
+    int rate_edf, maxTicks, totalTicks = 0;
+    TaskList *taskList = (TaskList *) malloc(sizeof(TaskList));
+    if (taskList == NULL) {
+        printf("Falha ao alocar memoria.\n");
+        return 1;
+    }
+    TaskQueue *taskQueue = (TaskQueue *) malloc(sizeof(TaskQueue));
+    if (taskQueue == NULL) {
+        printf("Falha ao alocar memoria.\n");
+        free(taskList);
+        taskList = NULL;
+        return 1;
+    }
+    taskList->head = NULL;
+    taskQueue->head = NULL;
 
+    if (argc != 3) {
+        printf("Quantidade invalida de argumentos.\n");
+        freeLists(taskList, taskQueue);
+        return 1;
+    }
+    if (strcmp(argv[1], "rate") == 0) {
+        rate_edf = 0;
+    } else if (strcmp(argv[1], "edf") == 0) {
+        rate_edf = 1;
+    } else {
+        printf("Tipo de escalonador invalido.\n");
+        freeLists(taskList, taskQueue);
+        return 1;
+    }
+
+    maxTicks = readFile(taskList, argv[2]);
+    if (maxTicks == -1) {
+        freeLists(taskList, taskQueue);
+        return -1;
+    }
+    updateTaskQueue(taskQueue, taskList, &totalTicks);
+    while (randomBoringFunctionThatExistsToCallWaitForTaskBoringFunction(taskQueue, taskList, &totalTicks, maxTicks) != 0);
+    printResults(taskList);
+
+    freeLists(taskList, taskQueue);
     return 0;
 }
