@@ -237,4 +237,184 @@ KILLED
 [?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make clean./scheduler rate voo.txt[10Pmake scheduler
 [?2004lgcc -c source/main.c -o objects/main.o
 gcc objects/main.o -o scheduler
-[?2004h]0;pori@LAPTOP-DK71SMK3: 
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make scheduler[4Pclean./scheduler rate voo.txt
+[?2004l[ATT] for 8 units - F
+[NAV] for 12 units - H
+[ATT] for 8 units - F
+[NAV] for 2 units - L
+idle for 10 units
+[ATT] for 8 units - F
+idle for 2 units
+[NAV] for 10 units - H
+[ATT] for 8 units - F
+[NAV] for 5 units - F
+idle for 7 units
+[ATT] for 8 units - F
+idle for 12 units
+
+LOST DEADLINES
+[ATT] 0
+[NAV] 1
+
+COMPLETE EXECUTION
+[ATT] 5
+[NAV] 1
+
+KILLED
+[ATT] 0
+[NAV] 0
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ EASY
+[?2004lEASY: command not found
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ EASY./scheduler rate voo.txt[10Pmake scheduler[4Pclean./scheduler rate voo.txt[14Pmake clean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make clean[6PEASY./scheduler rate voo.txt[10Pmake scheduler
+[?2004lgcc -c source/main.c -o objects/main.o
+gcc objects/main.o -o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make scheduler[4Pclean[6PEASY./scheduler rate voo.txt
+[?2004lEXECUTION BY RATE
+
+[ATT] for 8 units - F
+[NAV] for 12 units - H
+[ATT] for 8 units - F
+[NAV] for 2 units - L
+idle for 10 units
+[ATT] for 8 units - F
+idle for 2 units
+[NAV] for 10 units - H
+[ATT] for 8 units - F
+[NAV] for 5 units - F
+idle for 7 units
+[ATT] for 8 units - F
+idle for 12 units
+
+LOST DEADLINES
+[ATT] 0
+[NAV] 1
+
+COMPLETE EXECUTION
+[ATT] 5
+[NAV] 1
+
+KILLED
+[ATT] 0
+[NAV] 0
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler rate voo.txt[1P voo.txt[1P voo.txt[1P voo.txt[1P voo.txte voo.txtd voo.txtf voo.txt[C[C[C[C[C[C[C[C
+[?2004lEXECUTION BY EDF
+
+[ATT] for 8 units - F
+[NAV] for 15 units - F
+[ATT] for 8 units - F
+idle for 9 units
+[ATT] for 8 units - F
+idle for 2 units
+[NAV] for 10 units - H
+[ATT] for 8 units - F
+[NAV] for 5 units - F
+idle for 7 units
+[ATT] for 8 units - F
+idle for 12 units
+
+LOST DEADLINES
+[ATT] 0
+[NAV] 0
+
+COMPLETE EXECUTION
+[ATT] 5
+[NAV] 2
+
+KILLED
+[ATT] 0
+[NAV] 0
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler edf voo.txt[1@rate[C[C[C[C[C[C[C[C[10Pmake scheduler[4Pclean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make clean./scheduler edf voo.txt[1@rate[C[C[C[C[C[C[C[C[10Pmake scheduler
+[?2004lgcc -c source/main.c -o objects/main.o
+gcc objects/main.o -o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make scheduler[4Pclean./scheduler edf voo.txt[1P voo.txt[1P voo.txt[1P voo.txtr voo.txta voo.txtt voo.txte voo.txt[C[C[C[C[C[C[C[C
+[?2004lEXECUTION BY RATE
+
+[ATT] for 8 units - F
+[NAV] for 12 units - H
+[ATT] for 8 units - F
+[NAV] for 2 units - L
+idle for 10 units
+[ATT] for 8 units - F
+idle for 2 units
+[NAV] for 10 units - H
+[ATT] for 8 units - F
+[NAV] for 5 units - F
+idle for 7 units
+[ATT] for 8 units - F
+idle for 12 units
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler rate voo.txt[10Pmake scheduler[4Pclean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make clean./scheduler rate voo.txt[10Pmake scheduler
+[?2004lgcc -c source/main.c -o objects/main.o
+[01m[Ksource/main.c:[m[K In function ‘[01m[KwaitForTask[m[K’:
+[01m[Ksource/main.c:216:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kreturn[m[K’ with no value, in function returning non-void
+  216 |             [01;35m[Kreturn[m[K;
+      |             [01;35m[K^~~~~~[m[K
+[01m[Ksource/main.c:187:5:[m[K [01;36m[Knote: [m[Kdeclared here
+  187 | int [01;36m[KwaitForTask[m[K(TaskQueue *taskQueue, TaskList *taskList, int *totalTicks, int maxTicks, int rate_edf) {
+      |     [01;36m[K^~~~~~~~~~~[m[K
+gcc objects/main.o -o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make scheduler[4Pclean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make cleanscheduler[4Pclean./scheduler rate voo.txt[14Pmake cleanscheduler
+[?2004lgcc -c source/main.c -o objects/main.o
+gcc objects/main.o -o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make scheduler[4Pcleanscheduler[4Pclean./scheduler rate voo.txt
+[?2004lEXECUTION BY RATE
+
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler rate voo.txt[10Pmake scheduler[4Pcleanscheduler[4Pclean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make clean./scheduler rate voo.txt[10Pmake scheduler[4Pcleanscheduler
+[?2004lgcc -c source/main.c -o objects/main.o
+[01m[Ksource/main.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Ksource/main.c:433:17:[m[K [01;35m[Kwarning: [m[K‘[01m[Kreturn[m[K’ with no value, in function returning non-void
+  433 |                 [01;35m[Kreturn[m[K;
+      |                 [01;35m[K^~~~~~[m[K
+[01m[Ksource/main.c:377:5:[m[K [01;36m[Knote: [m[Kdeclared here
+  377 | int [01;36m[Kmain[m[K(int argc, char **argv) {
+      |     [01;36m[K^~~~[m[K
+[01m[Ksource/main.c:439:19:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Karq[m[K’
+  439 |             FILE *[01;31m[Karq[m[K = fopen("edf_abcs2.out", "a");
+      |                   [01;31m[K^~~[m[K
+[01m[Ksource/main.c:430:19:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Karq[m[K’ with type ‘[01m[KFILE *[m[K’
+  430 |             FILE *[01;36m[Karq[m[K = fopen("rate_abcs2.out", "a");
+      |                   [01;36m[K^~~[m[K
+[01m[Ksource/main.c:442:17:[m[K [01;35m[Kwarning: [m[K‘[01m[Kreturn[m[K’ with no value, in function returning non-void
+  442 |                 [01;35m[Kreturn[m[K;
+      |                 [01;35m[K^~~~~~[m[K
+[01m[Ksource/main.c:377:5:[m[K [01;36m[Knote: [m[Kdeclared here
+  377 | int [01;36m[Kmain[m[K(int argc, char **argv) {
+      |     [01;36m[K^~~~[m[K
+make: *** [Makefile:2: objects/main.o] Error 1
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make scheduler[4Pclean./scheduler rate voo.txt[14Pmake clean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make cleanscheduler[4Pclean./scheduler rate voo.txt
+[?2004lbash: ./scheduler: No such file or directory
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler rate voo.txt[14Pmake cleanscheduler
+[?2004lgcc -c source/main.c -o objects/main.o
+[01m[Ksource/main.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Ksource/main.c:439:19:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Karq[m[K’
+  439 |             FILE *[01;31m[Karq[m[K = fopen("edf_abcs2.out", "a");
+      |                   [01;31m[K^~~[m[K
+[01m[Ksource/main.c:430:19:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Karq[m[K’ with type ‘[01m[KFILE *[m[K’
+  430 |             FILE *[01;36m[Karq[m[K = fopen("rate_abcs2.out", "a");
+      |                   [01;36m[K^~~[m[K
+make: *** [Makefile:2: objects/main.o] Error 1
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make scheduler./scheduler rate voo.txt[14Pmake clean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make cleanscheduler./scheduler rate voo.txt[10Pmake scheduler
+[?2004lgcc -c source/main.c -o objects/main.o
+[01m[Ksource/main.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Ksource/main.c:439:19:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Karq1[m[K’
+  439 |             FILE *[01;31m[Karq1[m[K = fopen("edf_abcs2.out", "a");
+      |                   [01;31m[K^~~~[m[K
+[01m[Ksource/main.c:430:19:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Karq1[m[K’ with type ‘[01m[KFILE *[m[K’
+  430 |             FILE *[01;36m[Karq1[m[K = fopen("rate_abcs2.out", "a");
+      |                   [01;36m[K^~~~[m[K
+make: *** [Makefile:2: objects/main.o] Error 1
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make scheduler[4Pcleanscheduler./scheduler rate voo.txt[10Pmake scheduler[4Pclean
+[?2004lrm -f
