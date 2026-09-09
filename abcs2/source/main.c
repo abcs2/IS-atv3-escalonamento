@@ -71,7 +71,7 @@ void addTaskToList(TaskList *taskList, Task *task) {
 int createTask(TaskList *taskList, char *name, int period, int deadline, int burst) {
     Task *task = (Task *) malloc(sizeof(Task));
     if (task == NULL) {
-        printf("Falha ao alocar memoria.\n");
+        fprintf(stderr, "Falha ao alocar memoria.\n");
         return -1;
     }
     strcpy(task->name, name);
@@ -212,7 +212,7 @@ int waitForTask(TaskQueue *taskQueue, TaskList *taskList, int *totalTicks, int m
                 break;
         }
         if (arq == NULL) {
-            printf("Falha ao abrir arquivo de saida.\n");
+            fprintf(stderr, "Falha ao abrir arquivo de saida.\n");
             return -1;
         }
         fprintf(arq, "idle for %d units\n", currentCounter);
@@ -276,7 +276,7 @@ void runTask(TaskQueue *taskQueue, TaskList *taskList, Task *task, int *totalTic
             break;
     }
     if (arq == NULL) {
-        printf("Falha ao abrir arquivo de saida.\n");
+        fprintf(stderr, "Falha ao abrir arquivo de saida.\n");
         return;
     }
     fprintf(arq, "[%s] for %d units - %c\n", task->name, currentCounter, status);
@@ -303,18 +303,18 @@ int readFile(TaskList *taskList, char *fileName) {
     char name[MAX_NAME];
     FILE *arq = fopen(fileName, "r");
     if (arq == NULL) {
-        printf("Falha ao abrir o arquivo.\n");
+        fprintf(stderr, "Falha ao abrir o arquivo.\n");
         return -1;
     }
     fscanf(arq, "%d ", &maxTicks);
     if (maxTicks < 0) {
-        printf("Tempo invalido de execucao.\n");
+        fprintf(stderr, "Tempo invalido de execucao.\n");
         fclose(arq);
         return -1;
     }
     while (fscanf(arq, "%s %d %d %d ", name, &period, &deadline, &burst) != -1) {
-        if ((period < 0 || deadline < 0 || burst < 0) || (burst >= deadline || deadline >= period)) {
-            printf("Tempo invalido de execucao.\n");
+        if ((period < 0 || deadline < 0 || burst < 0) || (burst > deadline || deadline > period)) {
+            fprintf(stderr, "Tempo invalido de execucao.\n");
             fclose(arq);
             return -1;
         }
@@ -343,7 +343,7 @@ void printResults(TaskList *taskList, int rate_edf) {
             break;
     }
     if (arq == NULL) {
-        printf("Falha ao abrir arquivo de saida.\n");
+        fprintf(stderr, "Falha ao abrir arquivo de saida.\n");
         return;
     }
 
@@ -377,14 +377,15 @@ void printResults(TaskList *taskList, int rate_edf) {
 int main(int argc, char **argv) {
     // period > deadline > burst
     int rate_edf, maxTicks, totalTicks = 0;
+    FILE *arq;
     TaskList *taskList = (TaskList *) malloc(sizeof(TaskList));
     if (taskList == NULL) {
-        printf("Falha ao alocar memoria.\n");
+        fprintf(stderr, "Falha ao alocar memoria.\n");
         return 1;
     }
     TaskQueue *taskQueue = (TaskQueue *) malloc(sizeof(TaskQueue));
     if (taskQueue == NULL) {
-        printf("Falha ao alocar memoria.\n");
+        fprintf(stderr, "Falha ao alocar memoria.\n");
         free(taskList);
         taskList = NULL;
         return 1;
@@ -393,28 +394,16 @@ int main(int argc, char **argv) {
     taskQueue->head = NULL;
 
     if (argc != 3) {
-        printf("Quantidade invalida de argumentos.\n");
+        fprintf(stderr, "Quantidade invalida de argumentos.\n");
         freeLists(taskList, taskQueue);
         return 1;
     }
     if (strcmp(argv[1], "rate") == 0) {
         rate_edf = 0;
-        FILE *arq = fopen("rate_abcs2.out", "w");
-        if (arq == NULL) {
-            printf("Erro ao abrir arquivo de saida.\n");
-            return 1;
-        }
-        fclose(arq);
     } else if (strcmp(argv[1], "edf") == 0) {
         rate_edf = 1;
-        FILE *arq = fopen("edf_abcs2.out", "w");
-        if (arq == NULL) {
-            printf("Erro ao abrir arquivo de saida.\n");
-            return 1;
-        }
-        fclose(arq);
     } else {
-        printf("Tipo de escalonador invalido.\n");
+        fprintf(stderr, "Tipo de escalonador invalido.\n");
         freeLists(taskList, taskQueue);
         return 1;
     }
@@ -425,25 +414,26 @@ int main(int argc, char **argv) {
         return -1;
     }
     
-    FILE *arq1;
     switch(rate_edf) {
         case 0:
-            arq1 = fopen("rate_abcs2.out", "a");
-            if (arq1 == NULL) {
-                printf("Falha ao abrir arquivo de saida.\n");
+            arq = fopen("rate_abcs2.out", "w");
+            if (arq == NULL) {
+                fprintf(stderr, "Falha ao abrir arquivo de saida.\n");
+                freeLists(taskList, taskQueue);
                 return 1;
             }
-            fprintf(arq1, "EXECUTION BY RATE\n\n");
-            fclose(arq1);
+            fprintf(arq, "EXECUTION BY RATE\n\n");
+            fclose(arq);
             break;
         case 1:
-            arq1 = fopen("edf_abcs2.out", "a");
-            if (arq1 == NULL) {
-                printf("Falha ao abrir arquivo de saida.\n");
+            arq = fopen("edf_abcs2.out", "w");
+            if (arq == NULL) {
+                fprintf(stderr, "Falha ao abrir arquivo de saida.\n");
+                freeLists(taskList, taskQueue);
                 return 1;
             }
-            fprintf(arq1, "EXECUTION BY EDF\n\n");
-            fclose(arq1);
+            fprintf(arq, "EXECUTION BY EDF\n\n");
+            fclose(arq);
             break;
     }
     while (randomBoringFunctionThatExistsToCallWaitForTaskBoringFunction(taskQueue, taskList, &totalTicks, maxTicks, rate_edf) != 0);
