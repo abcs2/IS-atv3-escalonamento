@@ -299,20 +299,27 @@ int randomBoringFunctionThatExistsToCallWaitForTaskBoringFunction(TaskQueue *tas
 }
 
 int readFile(TaskList *taskList, char *fileName) {
-    int maxTicks, period, deadline, burst;
-    char name[MAX_NAME];
+    int maxTicks = -1, period = -1, deadline = -1, burst = -1;
+    char name[MAX_NAME], ch;
     FILE *arq = fopen(fileName, "r");
     if (arq == NULL) {
         fprintf(stderr, "Falha ao abrir o arquivo.\n");
         return -1;
     }
-    fscanf(arq, "%d ", &maxTicks);
+    fscanf(arq, "%d", &maxTicks);
+    while ((ch = fgetc(arq)) != '\n' && ch != EOF) {
+        if (ch != ' ' && ch != '\r') {
+            fprintf(stderr, "Numero invalido de argumentos.\n");
+            fclose(arq);
+            return -1;
+        }
+    }
     if (maxTicks < 0) {
         fprintf(stderr, "Tempo invalido de execucao.\n");
         fclose(arq);
         return -1;
     }
-    while (fscanf(arq, "%s %d %d %d ", name, &period, &deadline, &burst) != -1) {
+    while (fscanf(arq, "%s %d %d %d", name, &period, &deadline, &burst) != -1) {
         if ((period < 0 || deadline < 0 || burst < 0) || (burst > deadline || deadline > period)) {
             fprintf(stderr, "Tempo invalido de execucao.\n");
             fclose(arq);
@@ -322,6 +329,14 @@ int readFile(TaskList *taskList, char *fileName) {
             fclose(arq);
             return -1;
         }
+        while ((ch = fgetc(arq)) != '\n' && ch != EOF) {
+            if (ch != ' ' && ch != '\r') {
+                fprintf(stderr, "Numero invalido de argumentos.\n");
+                fclose(arq);
+                return -1;
+            }
+        }
+        period = -1, deadline = -1, burst = -1;
     }
 
     fclose(arq);
