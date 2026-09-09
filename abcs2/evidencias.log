@@ -589,4 +589,25 @@ gcc objects/main.o -o scheduler
 [?2004l[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler edf voo.txt[9Pmake scheduler[4Pclean./scheduler edf voo.txt[1@rate[C[C[C[C[C[C[C[C
 [?2004l[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler rate voo.txt[1Pedf[C[C[C[C[C[C[C[C[9Pmake scheduler[4Pclean
 [?2004lrm -f objects/*.o scheduler
-[?2004h]0;pori@
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make clean./scheduler rate voo.txt[1Pedf[C[C[C[C[C[C[C[C[9Pmake scheduler[4Pclean./scheduler edf voo.txt[1@rate[C[C[C[C[C[C[C[C[10Pmake scheduler[4Pclean./scheduler rate voo.txt[14Pmake cleanscheduler./scheduler rate voo.txt[1Pedf[C[C[C[C[C[C[C[C[13Pmake cleanscheduler./scheduler edf voo.txt[1@rate[C[C[C[C[C[C[C[C[14Pmake clean[Kmake clean./scheduler rate voo.txt[14Pmake clean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make clean./scheduler rate voo.txt[1Pedf[C[C[C[C[C[C[C[C[9Pmake scheduler
+[?2004lgcc -c source/main.c -o objects/main.o
+gcc objects/main.o -o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make scheduler[4Pclean./scheduler rate voo.txt
+[?2004lFloating point exception (core dumped)
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler rate voo.txt
+[?2004l[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler rate voo.txt[10Pmake scheduler[4Pclean
+[?2004lrm -f objects/*.o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make clean./scheduler rate voo.txt[10Pmake scheduler
+[?2004lgcc -c source/main.c -o objects/main.o
+gcc objects/main.o -o scheduler
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ make scheduler[4Pclean./scheduler rate voo.txt
+[?2004l[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler rate voo.txt
+[?2004l[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler rate voo.txt
+[?2004lTempo invalido de execucao.
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler rate voo.txt
+[?2004lTempo invalido de execucao.
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler rate voo.txt
+[?2004lTempo invalido de execucao.
+[?2004h]0;pori@LAPTOP-DK71SMK3: /mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[01;32mpori@LAPTOP-DK71SMK3[00m:[01;34m/mnt/c/eu/aaa/infrasoft/atv3/IS-atv3-escalonamento/abcs2[00m$ ./scheduler rate voo.txt

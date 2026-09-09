@@ -314,13 +314,13 @@ int readFile(TaskList *taskList, char *fileName) {
             return -1;
         }
     }
-    if (maxTicks < 0) {
+    if (maxTicks <= 0) {
         fprintf(stderr, "Tempo invalido de execucao.\n");
         fclose(arq);
         return -1;
     }
     while (fscanf(arq, "%s %d %d %d", name, &period, &deadline, &burst) != -1) {
-        if ((period < 0 || deadline < 0 || burst < 0) || (burst > deadline || deadline > period)) {
+        if ((period <= 0 || deadline <= 0 || burst <= 0) || (burst > deadline || deadline > period)) {
             fprintf(stderr, "Tempo invalido de execucao.\n");
             fclose(arq);
             return -1;
